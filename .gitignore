@@ -37,3 +37,6 @@ doc
 !test/fixtures/.gitkeep
 !test/fixtures/brain.dcm
 !test/fixtures/I120.dcm
+!test/fixtures/N2D_0001.dcm
+!test/fixtures/N2D_0002.dcm
+!test/fixtures/N2D_0003.dcm
