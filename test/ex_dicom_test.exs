@@ -42,9 +42,7 @@ defmodule ExDicomTest do
       # Columns
       assert dataset.elements["x00280011"]
 
-      # Rows should be uint16
       assert is_integer(ExDicom.DataSet.uint16(dataset, "x00280010"))
-      # Modality should be string
       assert is_binary(ExDicom.DataSet.string(dataset, "x00080060"))
     end
 
@@ -52,9 +50,7 @@ defmodule ExDicomTest do
       {:ok, dataset} = ExDicom.parse_file("test/fixtures/brain.dcm")
       transfer_syntax = dataset.elements["x00020010"]
 
-      # Should exist
       assert transfer_syntax
-      # Should be a string
       value = ExDicom.DataSet.string(dataset, "x00020010")
       assert is_binary(value)
     end
@@ -63,7 +59,6 @@ defmodule ExDicomTest do
       {:ok, dataset} = ExDicom.parse_file("test/fixtures/N2D_0003.dcm")
       transfer_syntax = dataset.elements["x00020010"]
 
-      # Should exist
       assert transfer_syntax
       value = ExDicom.DataSet.string(dataset, "x00020010")
       assert is_binary(value)
