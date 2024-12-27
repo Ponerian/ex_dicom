@@ -5,12 +5,27 @@ defmodule ExDicom.MixProject do
     [
       app: :ex_dicom,
       version: "0.1.0",
-      elixir: "~> 1.14",
+      elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       name: "EX_DICOM",
+      description: description(),
+      package: package(),
       source_url: "https://github.com/ponerian/ex_dicom",
       docs: docs()
+    ]
+  end
+
+  defp description() do
+    "A DICOM file format parser and utility library for Elixir"
+  end
+
+  defp package() do
+    [
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/ponerian/ex_dicom"
+      }
     ]
   end
 
