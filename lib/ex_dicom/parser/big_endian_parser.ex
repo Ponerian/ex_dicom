@@ -18,8 +18,8 @@ defmodule ExDicom.Parser.BigEndianParser do
     * position - The position to start parsing from
 
   ## Returns
-    * {:ok, integer} - The parsed unsigned 16-bit integer
-    * {:error, String.t()} - Error message if parsing fails
+    * `{:ok, integer}` - The parsed unsigned 16-bit integer
+    * `{:error, String.t()}` - Error message if parsing fails
 
   ## Examples
       iex> BigEndianParser.read_uint16(<<0x12, 0x34, 0x56>>, 0)
@@ -49,8 +49,8 @@ defmodule ExDicom.Parser.BigEndianParser do
     * position - The position to start parsing from
 
   ## Returns
-    * {:ok, integer} - The parsed signed 16-bit integer
-    * {:error, String.t()} - Error message if parsing fails
+    * `{:ok, integer}` - The parsed signed 16-bit integer
+    * `{:error, String.t()}` - Error message if parsing fails
 
   ## Examples
       iex> BigEndianParser.read_int16(<<0xFF, 0xFE, 0x56>>, 0)
@@ -80,8 +80,8 @@ defmodule ExDicom.Parser.BigEndianParser do
     * position - The position to start parsing from
 
   ## Returns
-    * {:ok, integer} - The parsed unsigned 32-bit integer
-    * {:error, String.t()} - Error message if parsing fails
+    * `{:ok, integer}` - The parsed unsigned 32-bit integer
+    * `{:error, String.t()}` - Error message if parsing fails
 
   ## Examples
       iex> BigEndianParser.read_uint32(<<0x12, 0x34, 0x56, 0x78>>, 0)
@@ -111,8 +111,8 @@ defmodule ExDicom.Parser.BigEndianParser do
     * position - The position to start parsing from
 
   ## Returns
-    * {:ok, integer} - The parsed signed 32-bit integer
-    * {:error, String.t()} - Error message if parsing fails
+    * `{:ok, integer}` - The parsed signed 32-bit integer
+    * `{:error, String.t()}` - Error message if parsing fails
 
   ## Examples
       iex> BigEndianParser.read_int32(<<0xFF, 0xFF, 0xFF, 0xFE>>, 0)
@@ -142,8 +142,8 @@ defmodule ExDicom.Parser.BigEndianParser do
     * position - The position to start parsing from
 
   ## Returns
-    * {:ok, float} - The parsed 32-bit float
-    * {:error, String.t()} - Error message if parsing fails
+    * `{:ok, float}` - The parsed 32-bit float
+    * `{:error, String.t()}` - Error message if parsing fails
 
   ## Examples
       iex> BigEndianParser.read_float(<<0x40, 0x48, 0xF5, 0xC3>>, 0)
@@ -173,8 +173,8 @@ defmodule ExDicom.Parser.BigEndianParser do
     * position - The position to start parsing from
 
   ## Returns
-    * {:ok, float} - The parsed 64-bit float
-    * {:error, String.t()} - Error message if parsing fails
+    * `{:ok, float}` - The parsed 64-bit float
+    * `{:error, String.t()}` - Error message if parsing fails
 
   ## Examples
       iex> BigEndianParser.read_double(<<0x40, 0x09, 0x21, 0xFB, 0x54, 0x44, 0x2D, 0x18>>, 0)

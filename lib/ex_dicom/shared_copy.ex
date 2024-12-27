@@ -12,8 +12,8 @@ defmodule ExDicom.SharedCopy do
     * length - Number of bytes to include in the slice
 
   ## Returns
-    * {:ok, binary} - A binary slice sharing the same underlying memory
-    * {:error, String.t()} - Error message if the input is invalid
+    * `{:ok, binary}` - A binary slice sharing the same underlying memory
+    * `{:error, String.t()}` - Error message if the input is invalid
 
   ## Examples
       iex> DicomParser.copy(<<1, 2, 3, 4>>, 1, 2)

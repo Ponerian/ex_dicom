@@ -20,7 +20,7 @@ defmodule ExDicom.Reader.ReadSequenceItem do
     * byte_stream - The byte stream to read from. Must implement the ByteStream protocol
 
   ## Returns
-    * {:ok, element, byte_stream} - Successfully read sequence item
+    * `{:ok, element, byte_stream}` - Successfully read sequence item
     * raises ArgumentError - If byte_stream is nil
     * raises RuntimeError - If the sequence item tag (FFFE,E000) is not found
   """

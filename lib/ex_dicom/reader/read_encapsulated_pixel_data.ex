@@ -22,8 +22,8 @@ defmodule ExDicom.Reader.ReadEncapsulatedPixelData do
       * :fragments - Optional array of fragment descriptors (default: pixel_data_element.fragments)
 
   ## Returns
-    * {:ok, binary} - The extracted pixel data
-    * {:error, reason} - If extraction fails
+    * `{:ok, binary}` - The extracted pixel data
+    * `{:error, reason}` - If extraction fails
   """
   def read_from_fragments(dataset, pixel_data_element, start_fragment_index, opts \\ []) do
     num_fragments = Keyword.get(opts, :num_fragments, 1)

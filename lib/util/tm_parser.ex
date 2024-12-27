@@ -23,9 +23,9 @@ defmodule ExDicom.Util.TMParser do
     * validate - Boolean indicating whether to validate the time components
 
   ## Returns
-    * {:ok, map} with time components if valid
-    * {:error, string} with error message if invalid and validate is true
-    * {:ok, nil} if input is invalid and validate is false
+    * `{:ok, map}` with time components if valid
+    * `{:error, string}` with error message if invalid and validate is true
+    * `{:ok, nil}` if input is invalid and validate is false
 
   ## Examples
       iex> TMParser.parse("14")

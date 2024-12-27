@@ -20,8 +20,8 @@ defmodule ExDicom.Reader.ReadEncapsulatedImageFrame do
       * :fragments - Optional array of fragment descriptors
 
   ## Returns
-    * {:ok, binary} - The extracted frame data
-    * {:error, reason} - If extraction fails
+    * `{:ok, binary}` - The extracted frame data
+    * `{:error, reason}` - If extraction fails
   """
   def read_frame(dataset, pixel_data_element, frame_index, opts \\ []) do
     basic_offset_table =

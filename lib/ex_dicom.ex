@@ -13,8 +13,8 @@ defmodule ExDicom do
     * file_path - Path to the DICOM file to parse
 
   ## Returns
-    * {:ok, dataset} - Successfully parsed DICOM data
-    * {:error, reason} - Error occurred during parsing
+    * `{:ok, dataset}` - Successfully parsed DICOM data
+    * `{:error, reason}` - Error occurred during parsing
 
   ## Examples
       iex> {:error, message} = ExDicom.parse_file("non_existent.dcm")
@@ -43,8 +43,8 @@ defmodule ExDicom do
     * file_path - Path where the DICOM file should be written
 
   ## Returns
-    * :ok - Successfully wrote DICOM data
-    * {:error, reason} - Error occurred during writing
+    * `:ok` - Successfully wrote DICOM data
+    * `{:error, reason}` - Error occurred during writing
 
   ## Examples
         iex> {:ok, dataset} = ExDicom.parse_file("test/fixtures/brain.dcm")

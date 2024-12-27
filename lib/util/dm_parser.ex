@@ -21,9 +21,9 @@ defmodule ExDicom.Util.DAParser do
     * validate - Boolean indicating whether to validate the date components
 
   ## Returns
-    * {:ok, map} with date components if valid
-    * {:error, string} with error message if invalid and validate is true
-    * {:ok, nil} if input is invalid and validate is false
+    * `{:ok, map}` with date components if valid
+    * `{:error, string}` with error message if invalid and validate is true
+    * `{:ok, nil}` if input is invalid and validate is false
 
   ## Examples
       iex> DAParser.parse("20240131")

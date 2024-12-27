@@ -13,8 +13,8 @@ defmodule ExDicom.ByteAllocator do
     * length - The desired length of the new binary in bytes
 
   ## Returns
-    * {:ok, binary} - A new binary of the specified length filled with zeros
-    * {:error, String.t()} - Error message if the input type is not supported
+    * `{:ok, binary}` - A new binary of the specified length filled with zeros
+    * `{:error, String.t()}` - Error message if the input type is not supported
 
   ## Examples
       iex> ByteAllocator.alloc(<<1, 2, 3>>, 5)

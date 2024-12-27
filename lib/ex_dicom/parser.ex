@@ -30,8 +30,8 @@ defmodule ExDicom.Parser do
       * :inflater - Function to handle deflated transfer syntax
 
   ## Returns
-    * {:ok, dataset} - Successfully parsed DICOM data
-    * {:error, reason} - Error occurred during parsing
+    * `{:ok, dataset}` - Successfully parsed DICOM data
+    * `{:error, reason}` - Error occurred during parsing
 
   ## Examples
       iex> Parser.parse_dicom(<<...>>)

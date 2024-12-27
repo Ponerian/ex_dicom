@@ -10,8 +10,8 @@ defmodule ExDicom.Alloc do
     * length - The desired length of the new binary in bytes
 
   ## Returns
-    * {:ok, binary} - A new zero-filled binary of the specified length
-    * {:error, String.t()} - Error message if the input is invalid
+    * `{:ok, binary}` - A new zero-filled binary of the specified length
+    * `{:error, String.t()}` - Error message if the input is invalid
 
   ## Examples
       iex> ExDicom.Alloc.zeros(3)

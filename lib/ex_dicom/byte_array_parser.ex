@@ -14,8 +14,8 @@ defmodule ExDicom.ByteArrayParser do
     * length - The maximum number of bytes to parse
 
   ## Returns
-    * {:ok, string} - The parsed string
-    * {:error, string} - Error message if reading fails
+    * `{:ok, string}` - The parsed string
+    * `{:error, string}` - Error message if reading fails
 
   ## Examples
       iex> ByteArrayParser.read_fixed_string(<<65, 66, 67, 0, 68>>, 0, 4)
