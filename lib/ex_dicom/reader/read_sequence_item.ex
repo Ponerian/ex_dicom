@@ -6,6 +6,12 @@ defmodule ExDicom.Reader.ReadSequenceItem do
   alias ExDicom.ByteStream
   alias ExDicom.Reader.ReadTag
 
+  @type sequence_item :: %{
+          tag: String.t(),
+          length: non_neg_integer(),
+          data_offset: non_neg_integer()
+        }
+
   @doc """
   Reads the tag and length of a sequence item.
 
@@ -24,28 +30,33 @@ defmodule ExDicom.Reader.ReadSequenceItem do
     * raises ArgumentError - If byte_stream is nil
     * raises RuntimeError - If the sequence item tag (FFFE,E000) is not found
   """
+
   @spec read_sequence_item(ByteStream.t() | nil) ::
-          {:ok, %{tag: String.t(), length: integer(), data_offset: integer()}, ByteStream.t()}
+          {:ok, sequence_item(), ByteStream.t()}
           | no_return()
   def read_sequence_item(nil) do
     raise ArgumentError, "missing required parameter 'byte_stream'"
   end
 
   def read_sequence_item(byte_stream) do
-    with {:ok, tag, read_tag_byte_stream} <- ReadTag.read_tag(byte_stream),
-         {:ok, byte_length, stream_after_length} <-
-           ByteStream.read_uint32(read_tag_byte_stream),
+    with {:ok, element, remaining_stream} <- read_item_header(byte_stream) do
+      if element.tag == "xFFFEE000" do
+        {:ok, element, remaining_stream}
+      else
+        raise "read_sequence_item: item tag (FFFE,E000) not found at offset #{byte_stream.position()}"
+      end
+    end
+  end
+
+  defp read_item_header(byte_stream) do
+    with {:ok, tag, stream_after_tag} <- ReadTag.read_tag(byte_stream),
+         {:ok, byte_length, stream_after_length} <- ByteStream.read_uint32(stream_after_tag),
          position <- ByteStream.get_position(stream_after_length) do
       element = %{
         tag: tag,
         length: byte_length,
         data_offset: position
       }
-
-      # Verify the sequence item tag
-      if element.tag != "xfffee000" do
-        raise "read_sequence_item: item tag (FFFE,E000) not found at offset #{byte_stream.position()}"
-      end
 
       {:ok, element, stream_after_length}
     end
