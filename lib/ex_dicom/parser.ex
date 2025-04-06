@@ -12,11 +12,23 @@ defmodule ExDicom.Parser do
   @lee "1.2.840.10008.1.2.1"
   @bei "1.2.840.10008.1.2.2"
   @deflated "1.2.840.10008.1.2.1.99"
+  @jpeg_baseline "1.2.840.10008.1.2.4.50"
+  @jpeg_extended "1.2.840.10008.1.2.4.51"
+  @jpeg_lossless_1 "1.2.840.10008.1.2.4.57"
+  @jpeg_ls_lossless "1.2.840.10008.1.2.4.80"
+  @jpeg_2000_lossless "1.2.840.10008.1.2.4.90"
+  @jpeg_2000_lossy "1.2.840.10008.1.2.4.91"
 
   def lei, do: @lei
   def lee, do: @lee
   def bei, do: @bei
   def deflated, do: @deflated
+  def jpeg_baseline, do: @jpeg_baseline
+  def jpeg_extended, do: @jpeg_extended
+  def jpeg_lossless_1, do: @jpeg_lossless_1
+  def jpeg_ls_lossless, do: @jpeg_ls_lossless
+  def jpeg_2000_lossless, do: @jpeg_2000_lossless
+  def jpeg_2000_lossy, do: @jpeg_2000_lossy
 
   @doc """
   Parses a DICOM P10 byte array and returns a DataSet object with the parsed elements.
@@ -83,9 +95,14 @@ defmodule ExDicom.Parser do
 
   defp get_dataset_byte_stream(transfer_syntax, position, byte_array, opts) do
     case transfer_syntax do
-      @deflated -> handle_deflated_syntax(byte_array, position, opts)
-      @bei -> ByteStream.new(BigEndianParser, byte_array, position)
-      _ -> ByteStream.new(LittleEndianByteArrayParser, byte_array, position)
+      @deflated ->
+        handle_deflated_syntax(byte_array, position, opts)
+
+      @bei ->
+        ByteStream.new(BigEndianParser, byte_array, position)
+
+      _ ->
+        ByteStream.new(LittleEndianByteArrayParser, byte_array, position)
     end
   end
 
